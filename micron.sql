@@ -42,7 +42,7 @@ INSERT INTO `config` (`id`, `nome`, `valor`) VALUES
 (1, 'sitename', 'Your Sitename'),
 (2, 'description', '<p>Your description</p>\r\n'),
 (3, 'author', 'Your Name'),
-(5, 'disqus_site', 'https://thiagofurlan.disqus.com');
+(5, 'disqus_site', 'https://create_your_site_on_disqus.disqus.com');
 
 -- --------------------------------------------------------
 
