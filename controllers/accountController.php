@@ -1,5 +1,5 @@
 <?php
-class loginController extends Controller {
+class accountController extends Controller {
 
 	private $users;
 
@@ -10,20 +10,20 @@ class loginController extends Controller {
     public function index() {
         $dados = array();
         if(isset($_POST['email']) && !empty($_POST['email'])){
-			$email = filter_var(addslashes($_POST['email']), FILTER_SANITIZE_STRING);
-			$password = filter_var(addslashes($_POST['password']), FILTER_SANITIZE_STRING);
+			$email = $this->sanitizeString($_POST['email']);
+			$password = $this->sanitizeString($_POST['password']);
 			if($this->users->login($email, $password)) {
-				header("Location: ".BASE_URL);
+				$this->redirect();
 			}
 		}
         $this->loadView('login', $dados);
     }
 
-    public function sair() {
+    public function logout() {
 		session_start();
 		$_SESSION = array();
 		session_destroy();
-		header("Location: ".BASE_URL);		
+		$this->redirect();
 	}
 
 }

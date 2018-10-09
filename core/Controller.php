@@ -24,9 +24,21 @@ class Controller {
 
 	public function isLogged() {
 		if (empty($_SESSION['id'])) {
-			header("Location: ".BASE_URL);
-			exit;
+			$this->redirect();
 		}
+	}
+
+	public function sanitizeString($string) {
+		return $string = filter_var(addslashes($string), FILTER_SANITIZE_STRING);
+	}
+
+	public function slugator($string) {
+		return strtolower(preg_replace('/[^\\pL\d_]+/u', '-', $string));
+	}
+
+	public function redirect($to = "") {
+		header("Location: ". BASE_URL . $to);
+		exit;
 	}
 
 }

@@ -33,11 +33,11 @@ class postsController extends Controller {
 		$dados = array();
 		$this->isLogged();
 		if (isset($_POST['title']) && !empty($_POST['title'])) {
-			$title = filter_var($_POST['title'], FILTER_SANITIZE_STRING);
+			$title = $this->sanitizeString($_POST['title']);
 			$content = $_POST['content'];
-			$published = filter_var($_POST['published'], FILTER_SANITIZE_STRING);
+			$published = $this->sanitizeString($_POST['published']);
 			$this->posts->post($title, $content, $published);
-			header("Location: ".BASE_URL.'posts');
+			$this->redirect("posts");
 		}
 		$this->loadTemplate('postWrite', $dados);
 	}
@@ -49,7 +49,7 @@ class postsController extends Controller {
 			$this->posts->addPreview($id);
 			$dados['post'] = $this->posts->load($id);
 		} else {
-			header("Location: ".BASE_URL.'404');
+			$this->redirect("404");
 		}
 		$this->loadTemplate('postRead', $dados);
 	}
@@ -60,15 +60,15 @@ class postsController extends Controller {
 		if ($this->posts->exists($id)) {
 			$dados['post'] = $this->posts->load($id);
 		} else {
-			header("Location: ".BASE_URL.'404');
+			$this->redirect("404");
 		}
 		if (isset($_POST['title']) && !empty($_POST['title'])) {
-			$title = filter_var($_POST['title'], FILTER_SANITIZE_STRING);
+			$title = $this->sanitizeString($_POST['title']);
 			$content = $_POST['content'];
-			$published = filter_var($_POST['published'], FILTER_SANITIZE_STRING);
-			$date = filter_var($_POST['date'], FILTER_SANITIZE_STRING);
+			$published = $this->sanitizeString($_POST['published']);
+			$date = $this->sanitizeString(($_POST['date']);
 			$this->posts->update($id, $title, $content, $published, $date);
-			header("Location: ".BASE_URL.'posts/update/'.$id);
+			$this->redirect("posts/update/".$id);
 		}
 		$this->loadTemplate('postUpdate', $dados);
 	}
@@ -77,9 +77,9 @@ class postsController extends Controller {
 		$this->isLogged();
 		if ($this->posts->exists($id)) {
 			$this->posts->delete($id);
-			header("Location: ".BASE_URL.'posts');
+			$this->redirect("posts");
 		} else {
-			header("Location: ".BASE_URL.'404');
+			$this->redirect("404");
 		}
 	}
 
@@ -87,9 +87,9 @@ class postsController extends Controller {
 		$this->isLogged();
 		if ($this->posts->exists($id)) {
 			$this->posts->restore($id);
-			header("Location: ".BASE_URL.'posts/trash');
+			$this->redirect("posts/trash");
 		} else {
-			header("Location: ".BASE_URL.'404');
+			$this->redirect("404");
 		}
 	}
 
