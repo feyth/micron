@@ -13,7 +13,7 @@
     <?php if(count($posts) > 0):?>
         <?php foreach($posts as $post):?>
         <div class="post-resume">
-            <a href="<?php echo BASE_URL.'posts/read/'.$post['id'].'/'.$post['uri'];?>">
+            <a href="<?php echo BASE_URL.$post['id'].'/'.$post['uri'];?>">
                 <div class="post-title"><?php echo $post['title'];?></div>
                 <div class="post-content">
                     <p><?php echo substr(strip_tags($post['content']), 0, 500).'...';?></p>

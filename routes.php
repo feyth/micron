@@ -2,4 +2,4 @@
 global $routes;
 $routes = array();
 $routes['/sitemap'] = '/home/sitemap';
-$routes['/{title}'] = '/posts/read/:titulo';
+$routes['/{id}/{title}'] = '/posts/read/:id';

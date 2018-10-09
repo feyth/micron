@@ -11,7 +11,7 @@ define("BASE_URL", "http://localhost/micron/");
 $config['dbname'] = 'micron';
 $config['host'] = 'localhost';
 $config['dbuser'] = 'root';
-$config['dbpass'] = '';
+$config['dbpass'] = 'root';
 global $db;
 try {
 	$db = new PDO("mysql:dbname=".$config['dbname'].";host=".$config['host'], $config['dbuser'], $config['dbpass']);
