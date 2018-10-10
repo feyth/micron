@@ -30,7 +30,7 @@ class postsController extends Controller {
 	}
 
 	public function write() {
-		$dados = array();
+		$data = array();
 		$this->isLogged();
 		if (isset($_POST['title']) && !empty($_POST['title'])) {
 			$title = $this->sanitizeString($_POST['title']);
@@ -39,19 +39,19 @@ class postsController extends Controller {
 			$this->posts->post($title, $content, $published);
 			$this->redirect("posts");
 		}
-		$this->loadTemplate('postWrite', $dados);
+		$this->loadTemplate('postWrite', $data);
 	}
 
 	public function read($id = 0) {
-		$dados = array();
+		$data = array();
 		if ($this->posts->exists($id) && $this->posts->isPublished($id)) {
-			$id = addslashes($id);
+			$id = $this->sanitizeString($id);
 			$this->posts->addPreview($id);
-			$dados['post'] = $this->posts->load($id);
+			$data['post'] = $this->posts->load($id);
 		} else {
 			$this->redirect("404");
 		}
-		$this->loadTemplate('postRead', $dados);
+		$this->loadTemplate('postRead', $data);
 	}
 
 	public function update($id = 0) {
@@ -66,9 +66,9 @@ class postsController extends Controller {
 			$title = $this->sanitizeString($_POST['title']);
 			$content = $_POST['content'];
 			$published = $this->sanitizeString($_POST['published']);
-			$date = $this->sanitizeString(($_POST['date']);
+			$date = $this->sanitizeString($_POST['date']);
 			$this->posts->update($id, $title, $content, $published, $date);
-			$this->redirect("posts/update/".$id);
+			$this->redirect("posts/editar/".$id);
 		}
 		$this->loadTemplate('postUpdate', $dados);
 	}
@@ -87,7 +87,7 @@ class postsController extends Controller {
 		$this->isLogged();
 		if ($this->posts->exists($id)) {
 			$this->posts->restore($id);
-			$this->redirect("posts/trash");
+			$this->redirect("posts/lixeira");
 		} else {
 			$this->redirect("404");
 		}

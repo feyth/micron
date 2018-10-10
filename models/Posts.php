@@ -49,10 +49,10 @@ class Posts extends Model {
 	}
 
 	public function post($title, $content, $published) {
-		$sql = $this->db->prepare("INSERT INTO posts SET title = :title, content = :content, uri = :uri, date = :date, published = :published");
+		$sql = $this->db->prepare("INSERT INTO posts SET title = :title, content = :content, uri = :uri, date = :date, published = :published, trash = 0, views = 0");
 		$sql->bindValue(":title", $title);
 		$sql->bindValue(":content", $content);
-		$sql->bindValue(":uri", $this->titleToURI($title));
+		$sql->bindValue(":uri", $this->slugator($title));
 		$sql->bindValue(":date", date('Y-m-d H:i:s', time()));
 		$sql->bindValue(":published", $published);
 		$sql->execute();
@@ -92,9 +92,8 @@ class Posts extends Model {
 		$sql->execute();
 	}
 
-	private function titleToURI($title) {
-		$uri = strtolower(str_replace(" ","-",preg_replace("/&([a-z])[a-z]+;/i", "$1", htmlentities(trim($title)))));
-		return $uri;
+	private function slugator($string) {
+		return strtolower(preg_replace('/[^\\pL\d_]+/u', '-', $string));
 	}
 
 }

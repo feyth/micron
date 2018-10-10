@@ -10,7 +10,7 @@
         <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
         <title><?php echo $this->config['sitename'];?></title>
         <?php if($viewName == 'postRead'):?>
-        <meta property="og:url" content="<?php echo BASE_URL.'posts/read/'.$viewData['post']['id'].'/'.$viewData['post']['uri'];?>">
+        <meta property="og:url" content="<?php echo BASE_URL.$viewData['post']['id'].'/'.$viewData['post']['uri'];?>">
         <meta property="og:type" content="website">
         <meta property="og:title" content="<?php echo $viewData['post']['title'];?>">
         <meta property="og:image" content="<?php echo BASE_URL;?>assets/images/tf.jpg">
@@ -55,13 +55,13 @@
                         </li>-->
                         <?php if(isset($_SESSION['id'])):?>
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="<?php echo BASE_URL;?>settings" data-toggle="tooltip" data-placement="bottom" title="Configurações"><i class="fa fa-fw fa-cog"></i><span class="d-inline d-sm-none"> Configurações</span></a>
+                            <a class="nav-link text-light" href="<?php echo BASE_URL;?>configuracoes" data-toggle="tooltip" data-placement="bottom" title="Configurações"><i class="fa fa-fw fa-cog"></i><span class="d-inline d-sm-none"> Configurações</span></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-light" href="<?php echo BASE_URL;?>posts/" data-toggle="tooltip" data-placement="bottom" title="Postagens"><i class="fa fa-fw fa-newspaper"></i><span class="d-inline d-sm-none"> Postagens</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?php echo BASE_URL;?>login/sair" title="Sair" data-toggle="tooltip" data-placement="bottom" title="Sair"><i class="fa fa-fw fa-sign-out-alt"></i><span class="d-inline d-sm-none"> Sair</span></a>
+                            <a class="nav-link" href="<?php echo BASE_URL;?>conta/sair" title="Sair" data-toggle="tooltip" data-placement="bottom" title="Sair"><i class="fa fa-fw fa-sign-out-alt"></i><span class="d-inline d-sm-none"> Sair</span></a>
                         </li>
                         <?php else:?>
                         <li class="nav-item">

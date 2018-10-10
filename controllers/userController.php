@@ -1,5 +1,5 @@
 <?php
-class accountController extends Controller {
+class userController extends Controller {
 
 	private $users;
 
@@ -20,7 +20,6 @@ class accountController extends Controller {
     }
 
     public function logout() {
-		session_start();
 		$_SESSION = array();
 		session_destroy();
 		$this->redirect();

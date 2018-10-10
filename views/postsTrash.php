@@ -15,10 +15,10 @@
 		<tbody>
 			<?php foreach($posts as $post):?>
 			<tr>
-				<td><a href="<?php echo BASE_URL.'posts/update/'.$post['id'];?>"><?php echo $post['title'];?></a></td>
+				<td><a href="<?php echo BASE_URL.'posts/editar/'.$post['id'];?>"><?php echo $post['title'];?></a></td>
 				<td><?php echo date('d/m/Y', strtotime($post['date']));?></td>
 				<td><?php echo $post['views'];?></td>
-				<td><a href="<?php echo BASE_URL.'posts/restore/'.$post['id'];?>" data-toggle="tooltip" data-placement="bottom" title="Restaurar item"><i class="fa fa-fw fa-undo"></i></a></td>
+				<td><a href="<?php echo BASE_URL.'posts/restaurar/'.$post['id'];?>" data-toggle="tooltip" data-placement="bottom" title="Restaurar item"><i class="fa fa-fw fa-undo"></i></a></td>
 			</tr>
 			<?php endforeach;?>
 		</tbody>

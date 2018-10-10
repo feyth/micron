@@ -3,4 +3,4 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ /micron/index.php?url=$1 [QSA,L]
 Options All -Indexes
-ErrorDocument 403 /micron/error/E403
+ErrorDocument 403 /micron/403

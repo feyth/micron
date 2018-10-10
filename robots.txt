@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: https://seudominio.com.br/home/sitemap
+Sitemap: https://seudominio.com.br/sitemap

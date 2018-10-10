@@ -29,9 +29,13 @@ class Core {
 			$currentController = 'homeController';
 			$currentAction = 'index';
 		}
+		// echo $currentController . "<br>";
+		// echo $currentAction;
+		// die;
 		$c = new $currentController();
 		call_user_func_array(array($c, $currentAction), $params);
 	}
+	
 	public function checkRoutes($url) {
 		global $routes;
 		foreach ($routes as $pt => $newurl) {
@@ -56,11 +60,5 @@ class Core {
 		}
 		return $url;
 	}
-	public function displayErrors($d) {
-        if($d) {
-            ini_set('display_errors', 1);
-            ini_set('display_startup_errors', 1);
-            error_reporting(E_ALL);
-        }
-    }
+	
 }

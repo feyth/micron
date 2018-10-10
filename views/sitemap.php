@@ -7,7 +7,7 @@
 </url>
 <?php foreach($posts as $post):?>
   <url>
-    <loc><?php echo BASE_URL.'posts/read/'.$post['id'].'/'.$post['uri'];?></loc>
+    <loc><?php echo BASE_URL.$post['id'].'/'.$post['uri'];?></loc>
     <lastmod><?php echo date('Y-m-d', strtotime($post['date']));?></lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

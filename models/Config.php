@@ -12,7 +12,7 @@ class Config extends Model {
 		return $array;
 	}
 
-	public function setPropriedade($nome, $valor) {
+	public function setProperty($nome, $valor) {
 		$sql = $this->db->prepare("UPDATE config SET valor = :valor WHERE nome = :nome");
 		$sql->bindValue(":valor", $valor);
 		$sql->bindValue(":nome", $nome);

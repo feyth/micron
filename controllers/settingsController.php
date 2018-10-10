@@ -10,11 +10,11 @@ class settingsController extends Controller {
 		$dados = array();
 		if (isset($_POST['sitename']) && !empty($_POST['sitename'])) {
 			$configuracoes = new Config();
-			$configuracoes->setPropriedade('sitename', $this->sanitizeString($_POST['sitename']));
-			$configuracoes->setPropriedade('author', $this->sanitizeString($_POST['author']));
-			$configuracoes->setPropriedade('description', $this->sanitizeString($_POST['description']));
-			$configuracoes->setPropriedade('disqus_site', $this->sanitizeString($_POST['disqus_site']));
-			$this->redirect("settings");
+			$configuracoes->setProperty('sitename', $this->sanitizeString($_POST['sitename']));
+			$configuracoes->setProperty('author', $this->sanitizeString($_POST['author']));
+			$configuracoes->setProperty('description', $this->sanitizeString($_POST['description']));
+			$configuracoes->setProperty('disqus_site', $this->sanitizeString($_POST['disqus_site']));
+			$this->redirect("configuracoes");
 		}
 		$this->loadTemplate('settings', $dados);
 	}

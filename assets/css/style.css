@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
+@import url('https://fonts.googleapis.com/css?family=Poppins');
 a {
 	color: #0b6a88;
 }
@@ -20,7 +20,7 @@ a:hover{
 }
 .post-title {
 	color: #0b6a88;
-	font-family: 'Roboto Slab', serif;
+	font-family: 'Poppins', sans-serif;
 	font-weight: lighter;
 	font-size: 2.3rem;
 	text-align: center;
