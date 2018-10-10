@@ -16,7 +16,7 @@ class homeController extends Controller {
 			$password = $this->sanitizeString($_POST['password']);
 			$users->login($email, $password);
 		}
-		$limit = 3;
+		$limit = 5;
 		$total = $this->posts->getTotalItems();
 		$data['pages'] = ceil($total/$limit);
 		if (!empty($_GET['p'])) {
