@@ -9,33 +9,33 @@ class homeController extends Controller {
 	}
 
 	public function index() {
-		$dados = array();
+		$data = array();
 		if (isset($_POST['email']) && !empty($_POST['email'])) {
 			$users = new Users();
 			$email = $this->sanitizeString($_POST['email']);
 			$password = $this->sanitizeString($_POST['password']);
 			$users->login($email, $password);
 		}
-		$limit = 10;
+		$limit = 3;
 		$total = $this->posts->getTotalItems();
-		$dados['pages'] = ceil($total/$limit);
+		$data['pages'] = ceil($total/$limit);
 		if (!empty($_GET['p'])) {
-			$dados['currentPage'] = intval($_GET['p']);
+			$data['currentPage'] = intval($this->sanitizeString($_GET['p']));
 		} else {
-			$dados['currentPage'] = 1;
+			$data['currentPage'] = 1;
 		}
-		$offset = ($dados['currentPage'] * $limit) - $limit;
-		$dados['posts'] = $this->posts->list($offset, $limit);
-		$this->loadTemplate('home', $dados);
+		$offset = ($data['currentPage'] * $limit) - $limit;
+		$data['posts'] = $this->posts->list($offset, $limit);
+		$this->loadTemplate('home', $data);
 	}
 
 	public function sitemap() {
-		$dados = array();
+		$data = array();
 		$total = $this->posts->getTotalItems();
 		header("Content-Type: application/xml; charset=UTF-8");
 		echo '<?xml version="1.0" encoding="UTF-8"?>';
-		$dados['posts'] = $this->posts->list(0, $total);
-		$this->loadView('sitemap', $dados);
+		$data['posts'] = $this->posts->list(0, $total);
+		$this->loadView('sitemap', $data);
 	}
 
 }
